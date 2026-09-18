@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:#04060c;}
+  ::selection{background:#22d3ee;color:#04060c;}
+  textarea,input,button{font-family:inherit;}
+  textarea:focus,input:focus{outline:none;}
+  @keyframes ob-scan{0%{background-position:0 0;}100%{background-position:0 220px;}}
+  @keyframes ob-grid{0%{background-position:0 0;}100%{background-position:0 44px;}}
+  @keyframes ob-blink{0%,49%{opacity:1;}50%,100%{opacity:0;}}
+  @keyframes ob-float{0%,100%{transform:translateY(0);}50%{transform:translateY(-9px);}}
+  @keyframes ob-glow{0%,100%{opacity:.55;}50%{opacity:1;}}
+  @keyframes ob-sweep{0%{transform:translateY(-130%);}100%{transform:translateY(280%);}}
+  @keyframes ob-flick{0%,100%{opacity:1;}92%{opacity:1;}93%{opacity:.4;}94%{opacity:1;}97%{opacity:.7;}98%{opacity:1;}}
+  @keyframes ob-gA{0%,100%{clip-path:inset(0 0 92% 0);transform:translate(0,0);}15%{clip-path:inset(18% 0 56% 0);transform:translate(-3px,0);}30%{clip-path:inset(62% 0 18% 0);transform:translate(3px,0);}45%{clip-path:inset(8% 0 74% 0);transform:translate(-2px,0);}60%{clip-path:inset(44% 0 38% 0);transform:translate(2px,0);}75%{clip-path:inset(0 0 92% 0);transform:translate(0,0);}}
+  @keyframes ob-gB{0%,100%{clip-path:inset(80% 0 4% 0);transform:translate(0,0);}20%{clip-path:inset(34% 0 44% 0);transform:translate(3px,0);}40%{clip-path:inset(70% 0 12% 0);transform:translate(-3px,0);}55%{clip-path:inset(10% 0 70% 0);transform:translate(2px,0);}70%{clip-path:inset(50% 0 30% 0);transform:translate(-2px,0);}}
+  @keyframes ob-pan{0%{transform:translateY(0);}100%{transform:translateY(-22px);}}
+</style>
+</helmet>
+
+<div style="background:#04060c;color:#e8eef6;font-family:'Chakra Petch',system-ui,sans-serif;min-height:100vh;position:relative;overflow:hidden;">
+
+  <!-- ambient page glow -->
+  <div style="position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(900px 600px at 50% -10%,rgba(34,211,238,0.10),transparent 60%),radial-gradient(700px 500px at 100% 120%,rgba(30,64,120,0.18),transparent 60%);"></div>
+
+  <!-- deliverable header -->
+  <div style="position:relative;z-index:2;display:flex;flex-wrap:wrap;align-items:center;gap:18px;padding:20px 34px;border-bottom:1px solid rgba(34,211,238,0.14);font-family:'JetBrains Mono',monospace;">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <div style="width:22px;height:22px;border:1.5px solid #22d3ee;transform:rotate(45deg);box-shadow:0 0 14px rgba(34,211,238,0.5);position:relative;">
+        <div style="position:absolute;inset:5px;background:#22d3ee;opacity:.85;"></div>
+      </div>
+      <span style="font-family:'Chakra Petch',sans-serif;font-weight:700;letter-spacing:7px;font-size:18px;">OBSCURA</span>
+    </div>
+    <span style="width:1px;height:18px;background:rgba(255,255,255,0.12);"></span>
+    <span style="color:#6b7689;font-size:12px;letter-spacing:1px;">LANDING · HERO · 3 VARIAÇÕES</span>
+    <span style="margin-left:auto;color:#22d3ee;font-size:12px;letter-spacing:1px;">NEURAL IMAGE ENGINE v3.0</span>
+  </div>
+
+  <!-- ============================ VARIAÇÃO 01 ============================ -->
+  <div style="position:relative;z-index:1;padding:14px 34px 8px;font-family:'JetBrains Mono',monospace;color:#22d3ee;font-size:12px;letter-spacing:1px;">// VARIAÇÃO 01 — HERO COM VÍDEO <span style="color:#6b7689;">· texto à esquerda · vídeo cibernético em loop · menina à direita</span></div>
+  <section style="position:relative;z-index:1;margin:0 34px 60px;min-height:800px;border:1px solid rgba(34,211,238,0.16);background:linear-gradient(180deg,#06090f,#04060c);overflow:hidden;">
+    <!-- background video -->
+    <video data-hero-video="true" autoplay="" loop="" muted="" playsinline="" preload="auto" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:78% center;z-index:0;">
+      <source src="assets/hero-bg.mp4" type="video/mp4" />
+    </video>
+    <!-- left-dark gradient so text reads, girl stays visible on the right -->
+    <div style="position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,rgba(4,6,12,0.97) 0%,rgba(4,6,12,0.9) 40%,rgba(4,6,12,0.6) 60%,rgba(4,6,12,0.16) 80%,rgba(4,6,12,0.35) 100%);"></div>
+    <!-- top/bottom vignette for nav + footing -->
+    <div style="position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(4,6,12,0.65) 0%,transparent 20%,transparent 72%,rgba(4,6,12,0.72) 100%);"></div>
+    <!-- subtle scanlines kept for the cyberpunk texture -->
+    <div style="position:absolute;inset:0;pointer-events:none;z-index:1;background:repeating-linear-gradient(0deg,rgba(0,0,0,0) 0px,rgba(0,0,0,0) 2px,rgba(0,0,0,0.22) 3px,rgba(0,0,0,0) 4px);background-size:100% 4px;animation:ob-scan 9s linear infinite;mix-blend-mode:multiply;opacity:.5;"></div>
+
+    <!-- nav -->
+    <div style="position:relative;z-index:3;display:flex;align-items:center;gap:30px;padding:26px 40px;">
+      <div style="display:flex;align-items:center;gap:11px;">
+        <div style="width:18px;height:18px;border:1.5px solid #22d3ee;transform:rotate(45deg);box-shadow:0 0 12px rgba(34,211,238,0.5);"></div>
+        <span style="font-weight:700;letter-spacing:6px;font-size:16px;">OBSCURA</span>
+      </div>
+      <div style="display:flex;gap:26px;margin-left:14px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:1px;color:#8a94a6;">
+        <span style="cursor:pointer;" style-hover="color:#22d3ee;">GALERIA</span>
+        <span style="cursor:pointer;" style-hover="color:#22d3ee;">MODELOS</span>
+        <span style="cursor:pointer;" style-hover="color:#22d3ee;">PREÇOS</span>
+      </div>
+      <button style="margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:1px;color:#e8eef6;background:transparent;border:1px solid rgba(255,255,255,0.18);padding:9px 18px;cursor:pointer;" style-hover="border-color:#22d3ee;color:#22d3ee;">ENTRAR</button>
+    </div>
+
+    <!-- left-aligned content -->
+    <div style="position:relative;z-index:3;max-width:620px;margin:24px 0 0;padding:0 54px;text-align:left;">
+      <div style="display:inline-flex;align-items:center;gap:9px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;color:#22d3ee;border:1px solid rgba(34,211,238,0.3);padding:6px 14px;background:rgba(34,211,238,0.04);">
+        <span style="width:6px;height:6px;background:#22d3ee;border-radius:50%;box-shadow:0 0 8px #22d3ee;animation:ob-glow 1.6s ease-in-out infinite;"></span>
+        DIFUSÃO NEURAL · TEMPO REAL
+      </div>
+      <div style="position:relative;margin:26px 0 0;">
+        <h1 style="margin:0;font-weight:700;font-size:clamp(46px,7vw,96px);line-height:0.95;letter-spacing:2px;color:#f4f8fc;text-shadow:0 0 38px rgba(34,211,238,0.28);animation:ob-flick 7s linear infinite;">GERE O<br>IMPOSSÍVEL</h1>
+        <h1 aria-hidden="true" style="position:absolute;inset:0;margin:0;font-weight:700;font-size:clamp(46px,7vw,96px);line-height:0.95;letter-spacing:2px;color:#22d3ee;opacity:.85;mix-blend-mode:screen;animation:ob-gA 4.2s steps(2) infinite;pointer-events:none;">GERE O<br>IMPOSSÍVEL</h1>
+        <h1 aria-hidden="true" style="position:absolute;inset:0;margin:0;font-weight:700;font-size:clamp(46px,7vw,96px);line-height:0.95;letter-spacing:2px;color:#3b82f6;opacity:.7;mix-blend-mode:screen;animation:ob-gB 3.6s steps(2) infinite;pointer-events:none;">GERE O<br>IMPOSSÍVEL</h1>
+      </div>
+      <p style="max-width:470px;margin:24px 0 0;color:#aab4c4;font-size:17px;line-height:1.55;font-weight:300;">Transforme uma frase em imagem. Renderização neural direto no navegador — sem instalar nada, sem espera.</p>
+
+      <!-- prompt console -->
+      <div style="max-width:540px;margin:30px 0 0;text-align:left;border:1px solid rgba(34,211,238,0.28);background:rgba(7,11,20,0.86);backdrop-filter:blur(8px);box-shadow:0 0 70px rgba(34,211,238,0.09),inset 0 1px 0 rgba(255,255,255,0.04);">
+        <div style="display:flex;align-items:center;gap:9px;padding:12px 16px;border-bottom:1px solid rgba(34,211,238,0.14);font-family:'JetBrains Mono',monospace;font-size:11px;color:#7b8799;">
+          <span style="width:9px;height:9px;border-radius:50%;background:#1e3a5f;"></span>
+          <span style="width:9px;height:9px;border-radius:50%;background:#1e3a5f;"></span>
+          <span style="width:9px;height:9px;border-radius:50%;background:#22d3ee;box-shadow:0 0 8px #22d3ee;"></span>
+          <span style="color:#22d3ee;margin-left:4px;">obscura://gerar</span>
+          <span style="margin-left:auto;">{{ status1 }}</span>
+        </div>
+        <div style="padding:18px;">
+          <div style="display:flex;align-items:flex-start;gap:10px;">
+            <span style="font-family:'JetBrains Mono',monospace;color:#22d3ee;font-size:14px;padding-top:2px;">▸</span>
+            <textarea rows="2" value="{{ p1 }}" onChange="{{ onP1 }}" placeholder="descreva sua imagem..." style="flex:1;background:transparent;border:none;color:#e8eef6;font-size:15px;line-height:1.5;resize:none;width:100%;font-family:'Chakra Petch',sans-serif;"></textarea>
+            <span style="width:8px;height:18px;background:#22d3ee;animation:ob-blink 1s step-end infinite;margin-top:3px;"></span>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;">
+            <sc-for list="{{ chips1 }}" as="c" hint-placeholder-count="4">
+              <button onClick="{{ c.on }}" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px;color:#8a94a6;background:rgba(34,211,238,0.04);border:1px solid rgba(34,211,238,0.18);padding:6px 12px;cursor:pointer;" style-hover="color:#22d3ee;border-color:#22d3ee;">{{ c.label }}</button>
+            </sc-for>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.06);font-family:'JetBrains Mono',monospace;font-size:11px;color:#6b7689;">
+            <span>MODELO <span style="color:#cdd6e2;">obscura-xl</span></span>
+            <span>PROPORÇÃO <span style="color:#cdd6e2;">1:1</span></span>
+            <span>PASSOS <span style="color:#cdd6e2;">30</span></span>
+            <button onClick="{{ gen1 }}" style="margin-left:auto;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:13px;letter-spacing:2px;color:#04060c;background:#22d3ee;border:none;padding:12px 26px;cursor:pointer;box-shadow:0 0 28px rgba(34,211,238,0.45);" style-hover="box-shadow:0 0 42px rgba(34,211,238,0.75);">{{ btn1 }}</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- results -->
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:20px 0 60px;max-width:540px;">
+        <sc-for list="{{ tiles1 }}" as="t" hint-placeholder-count="4">
+          <div style="position:relative;aspect-ratio:1;border:1px solid rgba(34,211,238,0.2);background:repeating-linear-gradient(45deg,#0b1220 0,#0b1220 7px,#080d18 7px,#080d18 14px);overflow:hidden;">
+            <div style="position:absolute;top:6px;left:6px;width:9px;height:9px;border-top:1px solid #22d3ee;border-left:1px solid #22d3ee;opacity:.6;"></div>
+            <div style="position:absolute;top:6px;right:6px;width:9px;height:9px;border-top:1px solid #22d3ee;border-right:1px solid #22d3ee;opacity:.6;"></div>
+            <div style="position:absolute;bottom:22px;left:6px;width:9px;height:9px;border-bottom:1px solid #22d3ee;border-left:1px solid #22d3ee;opacity:.6;"></div>
+            <div style="position:absolute;bottom:22px;right:6px;width:9px;height:9px;border-bottom:1px solid #22d3ee;border-right:1px solid #22d3ee;opacity:.6;"></div>
+            <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(34,211,238,0.45);letter-spacing:1px;">{{ t.cap }}</div>
+            <div style="position:absolute;bottom:0;left:0;right:0;padding:5px 7px;font-family:'JetBrains Mono',monospace;font-size:8px;color:#7b8799;background:linear-gradient(transparent,rgba(4,6,12,0.92));display:flex;justify-content:space-between;align-items:center;"><span>{{ t.meta }}</span><span style="color:#22d3ee;">✓</span></div>
+            <sc-if value="{{ gen1on }}" hint-placeholder-val="{{ false }}">
+              <div style="position:absolute;inset:0;background:rgba(4,6,12,0.55);"></div>
+              <div style="position:absolute;left:0;right:0;height:44%;background:linear-gradient(rgba(34,211,238,0),rgba(34,211,238,0.3),rgba(34,211,238,0));animation:ob-sweep 1.3s linear infinite;"></div>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ VARIAÇÃO 02 ============================ -->
+  <div style="position:relative;z-index:1;padding:14px 34px 8px;font-family:'JetBrains Mono',monospace;color:#22d3ee;font-size:12px;letter-spacing:1px;">// VARIAÇÃO 02 — SPLIT / LIVE CANVAS <span style="color:#6b7689;">· duas colunas · estilo app · canvas com HUD</span></div>
+  <section style="position:relative;z-index:1;margin:0 34px 60px;min-height:760px;border:1px solid rgba(34,211,238,0.16);background:linear-gradient(180deg,#05080e,#04060c);overflow:hidden;">
+    <div style="position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,0,0,0) 0px,rgba(0,0,0,0) 2px,rgba(0,0,0,0.28) 3px,rgba(0,0,0,0) 4px);background-size:100% 4px;animation:ob-scan 11s linear infinite;mix-blend-mode:multiply;opacity:.6;"></div>
+    <div style="position:absolute;top:0;left:0;width:60%;height:60%;background:radial-gradient(closest-side,rgba(34,211,238,0.1),transparent);pointer-events:none;"></div>
+
+    <!-- nav -->
+    <div style="position:relative;z-index:3;display:flex;align-items:center;gap:30px;padding:26px 44px;border-bottom:1px solid rgba(255,255,255,0.05);">
+      <div style="display:flex;align-items:center;gap:11px;">
+        <div style="width:18px;height:18px;border:1.5px solid #22d3ee;transform:rotate(45deg);box-shadow:0 0 12px rgba(34,211,238,0.5);"></div>
+        <span style="font-weight:700;letter-spacing:6px;font-size:16px;">OBSCURA</span>
+      </div>
+      <div style="display:flex;gap:26px;margin-left:14px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:1px;color:#8a94a6;">
+        <span style="cursor:pointer;" style-hover="color:#22d3ee;">GALERIA</span>
+        <span style="cursor:pointer;" style-hover="color:#22d3ee;">API</span>
+        <span style="cursor:pointer;" style-hover="color:#22d3ee;">PREÇOS</span>
+      </div>
+      <button style="margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:1px;color:#e8eef6;background:transparent;border:1px solid rgba(255,255,255,0.18);padding:9px 18px;cursor:pointer;" style-hover="border-color:#22d3ee;color:#22d3ee;">ENTRAR</button>
+    </div>
+
+    <div style="position:relative;z-index:3;display:grid;grid-template-columns:1fr 1.08fr;gap:54px;align-items:center;padding:48px 54px;">
+      <!-- left -->
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;color:#22d3ee;margin-bottom:22px;">[ 01 ] ESTÚDIO DE IMAGEM IA</div>
+        <h1 style="margin:0;font-weight:700;font-size:clamp(38px,4.6vw,64px);line-height:1.0;letter-spacing:1px;color:#f4f8fc;text-shadow:0 0 30px rgba(34,211,238,0.2);">DO PROMPT À<br>OBRA EM<br><span style="color:#22d3ee;">SEGUNDOS.</span></h1>
+        <p style="max-width:420px;margin:24px 0 0;color:#9aa6b6;font-size:16px;line-height:1.6;font-weight:300;">Para artistas e criadores: descreva, gere e itere. Variações em 4K, controle de estilo e seed — tudo dentro do navegador.</p>
+
+        <div style="display:flex;gap:0;margin-top:28px;max-width:460px;border:1px solid rgba(34,211,238,0.3);background:rgba(7,11,20,0.8);">
+          <input value="{{ p2 }}" onChange="{{ onP2 }}" placeholder="descreva sua imagem..." style="flex:1;background:transparent;border:none;color:#e8eef6;font-size:14px;padding:14px 16px;width:100%;" />
+          <button onClick="{{ gen2 }}" style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:12px;letter-spacing:1px;color:#04060c;background:#22d3ee;border:none;padding:0 22px;cursor:pointer;box-shadow:0 0 24px rgba(34,211,238,0.4);" style-hover="box-shadow:0 0 40px rgba(34,211,238,0.7);">{{ btn2 }}</button>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;">
+          <sc-for list="{{ chips2 }}" as="c" hint-placeholder-count="4">
+            <button onClick="{{ c.on }}" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px;color:#8a94a6;background:transparent;border:1px solid rgba(255,255,255,0.12);padding:6px 12px;cursor:pointer;" style-hover="color:#22d3ee;border-color:#22d3ee;">{{ c.label }}</button>
+          </sc-for>
+        </div>
+
+        <div style="display:flex;gap:34px;margin-top:38px;font-family:'JetBrains Mono',monospace;">
+          <div><div style="font-size:26px;font-weight:700;color:#f4f8fc;">12M+</div><div style="font-size:10px;letter-spacing:1px;color:#6b7689;margin-top:4px;">IMAGENS GERADAS</div></div>
+          <div><div style="font-size:26px;font-weight:700;color:#f4f8fc;">~4s</div><div style="font-size:10px;letter-spacing:1px;color:#6b7689;margin-top:4px;">RENDER MÉDIO</div></div>
+          <div><div style="font-size:26px;font-weight:700;color:#f4f8fc;">4K</div><div style="font-size:10px;letter-spacing:1px;color:#6b7689;margin-top:4px;">RESOLUÇÃO</div></div>
+        </div>
+      </div>
+
+      <!-- right canvas -->
+      <div style="position:relative;animation:ob-float 7s ease-in-out infinite;">
+        <div style="position:relative;border:1px solid rgba(34,211,238,0.3);background:rgba(6,10,18,0.7);padding:14px;box-shadow:0 30px 80px rgba(0,0,0,0.5),0 0 60px rgba(34,211,238,0.08);">
+          <div style="display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:10px;color:#7b8799;margin-bottom:12px;letter-spacing:1px;">
+            <span style="color:#22d3ee;">● CANVAS_LIVE</span>
+            <span>{{ status2 }}</span>
+          </div>
+          <div style="position:relative;aspect-ratio:4/3;border:1px solid rgba(34,211,238,0.2);background:repeating-linear-gradient(135deg,#0b1322 0,#0b1322 9px,#081020 9px,#081020 18px);overflow:hidden;">
+            <!-- contained background video -->
+            <video data-canvas-video="true" autoplay="" loop="" muted="" playsinline="" preload="auto" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;">
+              <source src="assets/canvas-video.mp4" type="video/mp4" />
+            </video>
+            <!-- tint + scanlines over the video to match the UI -->
+            <div style="position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(4,6,12,0.14),rgba(4,6,12,0.46));"></div>
+            <div style="position:absolute;inset:0;z-index:1;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,0,0,0) 0px,rgba(0,0,0,0) 2px,rgba(0,0,0,0.18) 3px,rgba(0,0,0,0) 4px);background-size:100% 4px;animation:ob-scan 9s linear infinite;mix-blend-mode:multiply;opacity:.5;"></div>
+            <!-- HUD corners -->
+            <div style="position:absolute;z-index:2;top:10px;left:10px;width:18px;height:18px;border-top:2px solid #22d3ee;border-left:2px solid #22d3ee;"></div>
+            <div style="position:absolute;z-index:2;top:10px;right:10px;width:18px;height:18px;border-top:2px solid #22d3ee;border-right:2px solid #22d3ee;"></div>
+            <div style="position:absolute;z-index:2;bottom:10px;left:10px;width:18px;height:18px;border-bottom:2px solid #22d3ee;border-left:2px solid #22d3ee;"></div>
+            <div style="position:absolute;z-index:2;bottom:10px;right:10px;width:18px;height:18px;border-bottom:2px solid #22d3ee;border-right:2px solid #22d3ee;"></div>
+            <!-- live status label -->
+            <div style="position:absolute;z-index:2;top:14px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;color:#22d3ee;background:rgba(4,6,12,0.55);border:1px solid rgba(34,211,238,0.25);padding:4px 12px;backdrop-filter:blur(4px);">
+              <span style="width:7px;height:7px;border-radius:50%;background:#22d3ee;box-shadow:0 0 8px #22d3ee;animation:ob-glow 1.4s ease-in-out infinite;"></span>{{ canvas2 }} · 2048²
+            </div>
+            <sc-if value="{{ gen2on }}" hint-placeholder-val="{{ false }}">
+              <div style="position:absolute;inset:0;z-index:3;background:rgba(4,6,12,0.5);"></div>
+              <div style="position:absolute;z-index:3;left:0;right:0;height:38%;background:linear-gradient(rgba(34,211,238,0),rgba(34,211,238,0.32),rgba(34,211,238,0));animation:ob-sweep 1.2s linear infinite;"></div>
+            </sc-if>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ VARIAÇÃO 03 ============================ -->
+  <div style="position:relative;z-index:1;padding:14px 34px 8px;font-family:'JetBrains Mono',monospace;color:#22d3ee;font-size:12px;letter-spacing:1px;">// VARIAÇÃO 03 — IMERSIVO <span style="color:#6b7689;">· galeria full-bleed · barra de comando flutuante</span></div>
+  <section style="position:relative;z-index:1;margin:0 34px 60px;min-height:800px;border:1px solid rgba(34,211,238,0.16);background:#04060c;overflow:hidden;">
+    <!-- mosaic background -->
+    <div style="position:absolute;inset:-4% -2%;display:grid;grid-template-columns:repeat(6,1fr);gap:10px;opacity:.4;animation:ob-pan 14s linear infinite alternate;">
+      <sc-for list="{{ mosaic }}" as="m" hint-placeholder-count="24">
+        <div style="position:relative;aspect-ratio:1;border:1px solid rgba(34,211,238,0.14);background:repeating-linear-gradient(45deg,#0a1120 0,#0a1120 6px,#070c16 6px,#070c16 12px);overflow:hidden;">
+          <div style="position:absolute;bottom:3px;left:4px;font-family:'JetBrains Mono',monospace;font-size:7px;color:rgba(34,211,238,0.4);">{{ m }}</div>
+        </div>
+      </sc-for>
+    </div>
+    <!-- overlays -->
+    <div style="position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 40%,rgba(4,6,12,0.55),rgba(4,6,12,0.92) 75%);"></div>
+    <div style="position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,0,0,0) 0px,rgba(0,0,0,0) 2px,rgba(0,0,0,0.34) 3px,rgba(0,0,0,0) 4px);background-size:100% 4px;animation:ob-scan 8s linear infinite;mix-blend-mode:multiply;opacity:.7;"></div>
+    <div style="position:absolute;inset:0;box-shadow:inset 0 0 200px rgba(0,0,0,0.85);pointer-events:none;"></div>
+
+    <!-- nav -->
+    <div style="position:relative;z-index:3;display:flex;align-items:center;justify-content:space-between;padding:26px 44px;">
+      <div style="display:flex;align-items:center;gap:11px;">
+        <div style="width:18px;height:18px;border:1.5px solid #22d3ee;transform:rotate(45deg);box-shadow:0 0 12px rgba(34,211,238,0.5);"></div>
+        <span style="font-weight:700;letter-spacing:6px;font-size:16px;">OBSCURA</span>
+      </div>
+      <button style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:1px;color:#04060c;background:#22d3ee;border:none;padding:9px 20px;cursor:pointer;box-shadow:0 0 22px rgba(34,211,238,0.4);" style-hover="box-shadow:0 0 38px rgba(34,211,238,0.7);">COMEÇAR GRÁTIS</button>
+    </div>
+
+    <!-- centered -->
+    <div style="position:relative;z-index:3;display:flex;flex-direction:column;align-items:center;text-align:center;padding:70px 24px 260px;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;color:#22d3ee;margin-bottom:30px;">∞ &nbsp;GALERIA INFINITA&nbsp; ∞</div>
+      <h1 style="margin:0 0 32px;font-weight:700;font-size:clamp(42px,6vw,84px);line-height:1.04;letter-spacing:3px;color:#f4f8fc;text-shadow:0 0 50px rgba(34,211,238,0.3);animation:ob-flick 9s linear infinite;">SUA IMAGINAÇÃO,<br>RENDERIZADA.</h1>
+      <p style="max-width:500px;margin:0;color:#aab4c4;font-size:17px;line-height:1.55;font-weight:300;">Uma frase é tudo que separa você da próxima imagem. Comece a gerar agora.</p>
+    </div>
+
+    <!-- floating command bar -->
+    <div style="position:absolute;left:50%;bottom:56px;transform:translateX(-50%);z-index:4;width:min(680px,calc(100% - 80px));">
+      <div style="border:1px solid rgba(34,211,238,0.35);background:rgba(7,11,20,0.78);backdrop-filter:blur(14px);box-shadow:0 0 70px rgba(34,211,238,0.14),0 24px 60px rgba(0,0,0,0.6);">
+        <div style="display:flex;align-items:center;gap:12px;padding:14px 16px;">
+          <span style="font-family:'JetBrains Mono',monospace;color:#22d3ee;font-size:15px;">⌘</span>
+          <input value="{{ p3 }}" onChange="{{ onP3 }}" placeholder="Descreva o que imaginar..." style="flex:1;background:transparent;border:none;color:#e8eef6;font-size:15px;width:100%;" />
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#6b7689;">{{ status3 }}</span>
+          <button onClick="{{ gen3 }}" style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:12px;letter-spacing:1px;color:#04060c;background:#22d3ee;border:none;padding:11px 22px;cursor:pointer;box-shadow:0 0 26px rgba(34,211,238,0.45);" style-hover="box-shadow:0 0 44px rgba(34,211,238,0.8);">{{ btn3 }}</button>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;padding:0 16px 14px;">
+          <sc-for list="{{ chips3 }}" as="c" hint-placeholder-count="4">
+            <button onClick="{{ c.on }}" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1px;color:#8a94a6;background:rgba(34,211,238,0.05);border:1px solid rgba(34,211,238,0.16);padding:5px 11px;cursor:pointer;" style-hover="color:#22d3ee;border-color:#22d3ee;">{{ c.label }}</button>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- footer note -->
+  <div style="position:relative;z-index:1;padding:0 34px 50px;font-family:'JetBrains Mono',monospace;font-size:11px;color:#5f6b7d;line-height:1.7;letter-spacing:0.5px;">
+    <span style="color:#22d3ee;">// nota:</span> as imagens são placeholders (mosaicos listrados) — o fluxo de "gerar" demonstra o estado de geração com sweep/scan. Posso plugar geração real, adicionar galeria/preços/FAQ, ou desenvolver só a variação que você escolher.
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    p1: 'cidade neon sob chuva, reflexos holográficos, atmosfera cyberpunk, 8k',
+    p2: 'retrato de androide, fibra óptica, luz ciano volumétrica',
+    p3: 'paisagem digital infinita, grade neon no horizonte, neblina elétrica',
+    st1: 'done', st2: 'done', st3: 'done',
+    g1: ['4F2A', '9C7E', '1B0D', '7E33'],
+    g2main: 'A11F',
+    g2thumbs: ['0C4E', '1A9D', '2F30', '3D77'],
+    g3: 'B2C8',
+  };
+
+  rand() {
+    return Math.floor(Math.random() * 65536).toString(16).toUpperCase().padStart(4, '0');
+  }
+
+  setP(n, e) { this.setState({ ['p' + n]: e.target.value }); }
+  chip(n, val) { this.setState({ ['p' + n]: val }); }
+
+  generate(n) {
+    this.setState({ ['st' + n]: 'gen' });
+    clearTimeout(this['_t' + n]);
+    this['_t' + n] = setTimeout(() => {
+      const u = { ['st' + n]: 'done' };
+      if (n === 1) u.g1 = [this.rand(), this.rand(), this.rand(), this.rand()];
+      if (n === 2) { u.g2main = this.rand(); u.g2thumbs = [this.rand(), this.rand(), this.rand(), this.rand()]; }
+      if (n === 3) u.g3 = this.rand();
+      this.setState(u);
+    }, 1700);
+  }
+
+  componentDidMount() {
+    document.querySelectorAll('video[data-hero-video], video[data-canvas-video]').forEach((v) => {
+      v.muted = true;
+      v.defaultMuted = true;
+      v.volume = 0;
+      v.loop = true;
+      v.autoplay = true;
+      v.setAttribute('playsinline', '');
+      v.setAttribute('webkit-playsinline', '');
+      const tryPlay = () => {
+        try { if (v.ended) v.currentTime = 0; } catch (e) {}
+        const p = v.play();
+        if (p && p.catch) p.catch(() => {});
+      };
+      tryPlay();
+      v.addEventListener('canplay', tryPlay, { once: true });
+      v.addEventListener('ended', () => { v.currentTime = 0; v.play().catch(() => {}); });
+    });
+    this._initCodeRain();
+  }
+
+  _initCodeRain() {
+    if (document.getElementById('ob-coderain')) return;
+    const layer = document.createElement('div');
+    layer.id = 'ob-coderain';
+    layer.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:60;overflow:hidden;';
+    document.body.appendChild(layer);
+    this._rainLayer = layer;
+
+    const glyphs = ['{', '}', '(', ')', '<', '>', '/', '=', ';', '0', '1', 'x', 'λ', '#', '$', '&', '|', '+', '*', 'def', 'fn()', '0x1F', '==', '</>', 'AI', '[]', '::', '~', '!', '?', '%', '^', 'gen', '◇', 'void', '01'];
+    const colors = ['#22d3ee', '#3b82f6', '#e8eef6', '#a855f7', '#34d399', '#f43f5e', '#eab308'];
+    const parts = [];
+    this._rainParts = parts;
+
+    const spawn = (n) => {
+      const w = innerWidth, h = innerHeight;
+      for (let i = 0; i < n; i++) {
+        if (parts.length > 150) break;
+        // only left / right side bands — never the center
+        const left = Math.random() < 0.5;
+        const band = w * 0.15;
+        const x = left ? Math.random() * band : w - Math.random() * band;
+        const y = Math.random() * h;
+        const el = document.createElement('span');
+        el.textContent = glyphs[(Math.random() * glyphs.length) | 0];
+        const col = colors[(Math.random() * colors.length) | 0];
+        const size = 11 + Math.random() * 13;
+        el.style.cssText = "position:absolute;left:0;top:0;font-family:'JetBrains Mono',monospace;font-weight:700;white-space:nowrap;will-change:transform,opacity;color:" + col + ";font-size:" + size.toFixed(1) + "px;text-shadow:0 0 9px " + col + ";opacity:0;";
+        layer.appendChild(el);
+        // small inward drift that fades out long before reaching the center
+        const inward = (left ? 1 : -1) * (w * 0.04 + Math.random() * w * 0.07);
+        const drift = (Math.random() - 0.5) * h * 0.16;
+        parts.push({ el, x, y, dx: inward, dy: drift, t: 0, life: 1300 + Math.random() * 1500, rot: (Math.random() - 0.5) * 38, reach: 1 });
+      }
+    };
+
+    let prev = performance.now();
+    const tick = (now) => {
+      const dt = now - prev; prev = now;
+      for (let i = parts.length - 1; i >= 0; i--) {
+        const p = parts[i];
+        p.t += dt;
+        const pr = p.t / p.life;
+        if (pr >= 1) { p.el.remove(); parts.splice(i, 1); continue; }
+        const ease = (1 - Math.pow(1 - pr, 2)) * p.reach;
+        const px = p.x + p.dx * ease, py = p.y + p.dy * ease;
+        p.el.style.transform = 'translate(' + px.toFixed(1) + 'px,' + py.toFixed(1) + 'px) rotate(' + (p.rot * pr).toFixed(1) + 'deg)';
+        p.el.style.opacity = Math.sin(pr * Math.PI).toFixed(3);
+      }
+      this._rainRAF = requestAnimationFrame(tick);
+    };
+    this._rainRAF = requestAnimationFrame(tick);
+
+    let last = window.scrollY || 0;
+    let acc = 0;
+    const STEP = 20;
+    this._onScroll = () => {
+      const y = window.scrollY || document.documentElement.scrollTop || 0;
+      acc += Math.abs(y - last); last = y;
+      while (acc >= STEP) { acc -= STEP; spawn(1 + ((Math.random() * 2) | 0)); }
+    };
+    this._onWheel = (e) => {
+      acc += Math.min(46, Math.abs(e.deltaY));
+      while (acc >= STEP) { acc -= STEP; spawn(1); }
+    };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    window.addEventListener('wheel', this._onWheel, { passive: true });
+  }
+
+  componentWillUnmount() {
+    [1, 2, 3].forEach(n => clearTimeout(this['_t' + n]));
+    if (this._rainRAF) cancelAnimationFrame(this._rainRAF);
+    if (this._onScroll) window.removeEventListener('scroll', this._onScroll);
+    if (this._onWheel) window.removeEventListener('wheel', this._onWheel);
+    if (this._rainLayer && this._rainLayer.parentNode) this._rainLayer.parentNode.removeChild(this._rainLayer);
+  }
+
+  renderVals() {
+    if (!this._mosaic) this._mosaic = Array.from({ length: 24 }, () => 'IMG_' + this.rand());
+    const s = this.state;
+    const g1on = s.st1 === 'gen', g2on = s.st2 === 'gen', g3on = s.st3 === 'gen';
+
+    const presets1 = [
+      { label: 'CYBERPUNK', val: 'cidade neon sob chuva, reflexos holográficos, atmosfera cyberpunk, 8k' },
+      { label: 'ANDROIDE', val: 'retrato de androide, fibra óptica, luz ciano volumétrica, close-up' },
+      { label: 'SYNTHWAVE', val: 'paisagem synthwave, sol de grade, montanhas digitais, horizonte neon' },
+      { label: 'HOLOGRAMA', val: 'interface holográfica flutuante, partículas de dados, vidro fosco' },
+    ];
+    const presets3 = [
+      { label: 'cidade neon', val: 'cidade neon sob chuva, reflexos holográficos, atmosfera cyberpunk' },
+      { label: 'criatura digital', val: 'criatura digital bioluminescente, circuitos orgânicos, fundo escuro' },
+      { label: 'retrofuturismo', val: 'pôster retrofuturista, cromo, grade neon, estética anos 80' },
+      { label: 'abstrato', val: 'fluido de dados abstrato, fios de luz ciano, partículas, fundo preto' },
+    ];
+
+    return {
+      p1: s.p1, p2: s.p2, p3: s.p3,
+      onP1: (e) => this.setP(1, e), onP2: (e) => this.setP(2, e), onP3: (e) => this.setP(3, e),
+      gen1: () => this.generate(1), gen2: () => this.generate(2), gen3: () => this.generate(3),
+      gen1on: g1on, gen2on: g2on, gen3on: g3on,
+      btn1: g1on ? 'GERANDO…' : 'GERAR ▸',
+      btn2: g2on ? '…' : 'GERAR',
+      btn3: g3on ? 'GERANDO…' : 'GERAR ▸',
+      status1: g1on ? 'difusão neural · 30%' : 'pronto · 4 imagens',
+      status2: g2on ? 'RENDERIZANDO' : 'RENDER COMPLETO · seed 0x' + s.g2main,
+      status3: g3on ? 'gerando' : 'pronto',
+      canvas2: g2on ? 'RENDERIZANDO' : 'RENDER_' + s.g2main,
+      chips1: presets1.map(p => ({ label: p.label, on: () => this.chip(1, p.val) })),
+      chips2: presets1.map(p => ({ label: p.label, on: () => this.chip(2, p.val) })),
+      chips3: presets3.map(p => ({ label: p.label, on: () => this.chip(3, p.val) })),
+      tiles1: s.g1.map(h => ({ cap: 'IMG_' + h, meta: '1024² · 0x' + h })),
+      thumbs2: s.g2thumbs.map(h => ({ cap: h })),
+      mosaic: this._mosaic,
+    };
+  }
+}
+</script>
+</body>
+</html>
